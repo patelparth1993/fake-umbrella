@@ -1,0 +1,14 @@
+<div class="grafico">
+    <!-- <button mat-raised-button color="primary" class="refresh-forecast" (click)="refreshForecast()">Refresh Forecast</button> -->
+    <div class="content">
+        <h2 *ngIf="TopFourCustomers.length===0">Add Customers First</h2>
+        <div class="bars" *ngFor="let item of TopFourCustomers">
+            <span>{{item.numberOfEmployees}}</span>
+            <div class="bar" [style.background-color]="item.color" [style.height]='item.size'></div>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="legends">
+        <span *ngFor="let item of TopFourCustomers">{{item.name}}</span>
+    </div>
+</div>

@@ -1,0 +1,128 @@
+<mat-tab-group>
+  <mat-tab label="All Customers"> 
+    <h2 *ngIf="allCustomers.length===0" style="text-align: center;"> Add Customers First</h2>
+
+    <mat-grid-list *ngIf="allCustomers.length>0" cols="4" rowHeight="2:1">
+      <mat-grid-tile *ngFor="let customer of allCustomers">
+        <div style="flex-direction:column;">
+          <h4>{{customer.name}}</h4>
+          <p style="margin: 0px;"><span style="font-weight: 600;">No. Of Employees: </span>{{customer.numberOfEmployees}}</p>
+          <p style="margin: 0px;"><span style="font-weight: 600;">Location: </span>{{customer.location}}</p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>  
+  </mat-tab>
+    <mat-tab label="New Customer">
+        <br />
+        <form class="customer-form" [formGroup]="createCustomerForm" (ngSubmit)="onCreateCustomerSubmit()">
+            <mat-form-field class="example-full-width">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Name of the Company" formControlName="name" required>
+            </mat-form-field>
+            <br/>
+            <mat-form-field class="example-full-width">
+              <mat-label>Person Of Contact</mat-label>
+              <input matInput formControlName="personOfContact" required>
+            </mat-form-field>
+            <br/>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Number of Employees</mat-label>
+                <input matInput type="number" formControlName="numberOfEmployees" required>
+              </mat-form-field>
+              <br/>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>City</mat-label>
+                <input matInput formControlName="location" required>
+              </mat-form-field>
+              <br/>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Telephone Number(10 digits)</mat-label>
+                <input matInput type="tel" formControlName="telephoneNumber" required>
+              </mat-form-field>
+              <br />
+              <button mat-raised-button color="primary" [disabled]="!createCustomerForm.valid">Create Customer</button>
+          </form>
+          <br />
+          <div *ngIf="successMsg">
+            {{successMsg}}
+          </div>
+          <div *ngIf="errorMsg">
+            {{errorMsg}}
+          </div>
+    </mat-tab>
+    <mat-tab label="Update Customer"> 
+      <br />
+      <h2 *ngIf="allCustomers.length===0" style="text-align: center;"> Add Customers First</h2>
+
+      <form *ngIf="allCustomers.length>0" class="customer-form" [formGroup]="updateCustomerForm" (ngSubmit)="updateCustomer()">
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Select company whose details you want to update</mat-label>
+              <mat-select formControlName="id">
+                <mat-option *ngFor="let customer of allCustomers" [value]="customer.id">
+                  {{customer.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          <br/>
+          <mat-form-field class="example-full-width">
+            <mat-label>Person Of Contact</mat-label>
+            <input matInput formControlName="personOfContact" >
+          </mat-form-field>
+          <br/>
+
+          <mat-form-field class="example-full-width">
+              <mat-label>Number of Employees</mat-label>
+              <input matInput type="number" formControlName="numberOfEmployees" >
+            </mat-form-field>
+            <br/>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>City</mat-label>
+              <input matInput formControlName="location" >
+            </mat-form-field>
+            <br/>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Telephone Number</mat-label>
+              <input matInput type="tel" formControlName="telephoneNumber" >
+            </mat-form-field>
+            <br />
+            <button mat-raised-button color="primary" [disabled]="!getUpdateFormValidity()">Update Customer</button>
+        </form>
+        <br />
+        <div *ngIf="successMsg">
+          {{successMsg}}
+        </div>
+        <div *ngIf="errorMsg">
+          {{errorMsg}}
+        </div>  
+    </mat-tab>
+    <mat-tab label="Delete Customer"> 
+      <br />
+      <h2 *ngIf="allCustomers.length===0" style="text-align: center;"> Add Customers First</h2>
+
+      <form *ngIf="allCustomers.length>0" class="customer-form" [formGroup]="deleteCustomerForm" (ngSubmit)="deleteCustomer()">
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Select company you want to delete</mat-label>
+              <mat-select formControlName="name">
+                <mat-option *ngFor="let customer of allCustomers" [value]="customer.name">
+                  {{customer.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          <br/>
+         
+            <button mat-raised-button color="primary" [disabled]="!getDeleteFormValidity()">Delete Customer</button>
+        </form>
+        <br />
+        <div *ngIf="successMsg">
+          {{successMsg}}
+        </div>
+        <div *ngIf="errorMsg">
+          {{errorMsg}}
+        </div>  
+    </mat-tab>
+  </mat-tab-group>
