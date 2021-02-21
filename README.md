@@ -7,7 +7,7 @@ Clone the REPO and run below command
 cd <cloned_repo_path>/server
 
 npm install
-npm start
+  npm start
 
 Starts the server [http://localhost:3000](http://localhost:3000) 
 
