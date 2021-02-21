@@ -1,20 +1,20 @@
 # fake-umbrella
 
-##Pre-Requisites
+#Pre-Requisites
 1. Node 
 2. NPM
 
 Clone the Repo
 Complete following Steps:
 
-##Backend:
+#Backend:
 cd <cloned_repo_path>/server
 npm install
 npm start
 
 This will start server at http://localhost:3000/
 
-##FrontEned
+#FrontEned
 cd <cloned_repo_path>/client
 npm install
 ng serve
