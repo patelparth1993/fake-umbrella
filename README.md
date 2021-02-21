@@ -2,6 +2,10 @@
 
 Clone the REPO and run below command
 
+Pre-requisites for Setup:
+
+Node, npm
+
 ### `Backend`
 
 cd <cloned_repo_path>/server
