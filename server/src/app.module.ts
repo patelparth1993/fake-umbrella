@@ -10,7 +10,7 @@ import { Customer } from './entities/customer.entity'
   imports: [
     TypeOrmModule.forRoot({
       type:"mongodb",
-      url:process.env.db_string,
+      url:"mongodb+srv://fake-umbrella-generic:Test123@fakeumbrella.1infy.mongodb.net/mindbeacon?retryWrites=true&w=majority",
       entities:[Customer],
       synchronize:true,
       useUnifiedTopology: true,
