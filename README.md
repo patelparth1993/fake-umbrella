@@ -5,13 +5,11 @@ Clone the REPO and run below command
 ### `Backend`
 
 cd <cloned_repo_path>/server
+
 npm install
 npm start
 
 Starts the server [http://localhost:3000](http://localhost:3000) 
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
 ### `npm test`
 
